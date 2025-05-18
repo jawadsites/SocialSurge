@@ -1,0 +1,98 @@
+/**
+ * Sidebar fixes for RTL and mobile
+ */
+
+/* Fix for RTL sidebar on mobile */
+html[dir="rtl"] .sidebar {
+  left: auto !important;
+  right: 0 !important;
+  -webkit-transform: translateX(100%) !important;
+  transform: translateX(100%) !important;
+}
+
+html[dir="rtl"] .sidebar.open {
+  -webkit-transform: translateX(0) !important;
+  transform: translateX(0) !important;
+}
+
+/* Fix for toggling sidebar */
+#sidebar-toggle {
+  /* Don't force display to override Tailwind's lg:hidden */
+  align-items: center !important;
+  justify-content: center !important;
+  width: 40px !important;
+  height: 40px !important;
+  cursor: pointer !important;
+  z-index: 50 !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+/* Ensure sidebar overlay works properly */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 35;
+}
+
+.sidebar-overlay.active {
+  display: block !important;
+}
+
+/* Fix sidebar position and ensure it's always visible when open */
+.sidebar.open {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Improve sidebar transition */
+.sidebar {
+  transition: transform 0.3s ease !important;
+}
+
+/* Sidebar toggle feedback */
+#sidebar-toggle:active {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+/* Better visibility rules for the sidebar toggle button */
+@media (max-width: 1024px) {
+  /* Ensure toggle is visible on mobile/tablet screens */
+  #sidebar-toggle {
+    display: flex !important;
+    padding: 8px !important;
+  }
+
+  #sidebar-toggle i {
+    font-size: 24px !important;
+  }
+  
+  /* Ensure sidebar is accessible from screen edge */
+  html:not([dir="rtl"]) .sidebar {
+    left: 0;
+    right: auto;
+  }
+  
+  html[dir="rtl"] .sidebar {
+    right: 0;
+    left: auto;
+  }
+}
+
+/* Ensure the toggle button is hidden on large screens (overrides Tailwind's classes if needed) */
+@media (min-width: 1025px) {
+  #sidebar-toggle {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+  }
+}

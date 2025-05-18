@@ -1,0 +1,73 @@
+/* أنماط حالة تسجيل الدخول بأولوية قصوى */
+
+/* عندما يكون المستخدم غير مسجل دخول */
+body.logged-out .sidebar,
+body.logged-out .w-1/5 {
+  display: none !important;
+}
+
+body.logged-out #dashboard {
+  display: none !important;
+}
+
+body.logged-out #login-screen {
+  display: flex !important;
+}
+
+/* عندما يكون المستخدم مسجل دخول */
+body.logged-in #login-screen {
+  display: none !important;
+}
+
+body.logged-in #dashboard {
+  display: block !important;
+}
+
+/* تأكيد ظهور الشريط الجانبي في الأجهزة الكبيرة بعد تسجيل الدخول */
+@media (min-width: 1025px) {
+  body.logged-in .sidebar,
+  body.logged-in .w-1/5 {
+    display: block !important;
+    width: 20% !important;
+    transform: translateX(0) !important;
+    position: relative !important;
+  }
+  
+  body.logged-in .w-4/5 {
+    width: 80% !important;
+  }
+}
+
+/* تحسين تصميم شاشة تسجيل الدخول */
+#login-screen {
+  background-color: #f9fafb !important;
+  z-index: 9999 !important;
+}
+
+#login-screen .bg-white {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+  border-radius: 12px !important;
+  transition: all 0.3s !important;
+}
+
+#login-screen .bg-white:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important;
+  transform: translateY(-5px);
+}
+
+#login-screen button[type="submit"] {
+  transition: all 0.3s !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+#login-screen button[type="submit"]:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 5px 10px rgba(37, 99, 235, 0.2) !important;
+}
+
+/* تعزيز الخصوصية والأولوية CSS */
+html body.logged-in #dashboard:not(.hidden) .sidebar {
+  display: block !important;
+  width: 20% !important;
+}

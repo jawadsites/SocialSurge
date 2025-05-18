@@ -1,0 +1,508 @@
+/* 
+ * Additional responsive fixes to enhance mobile experience
+ * These styles will override and extend existing responsive styles
+ */
+
+/* Improved responsive grid layout for better card display */
+@media (max-width: 640px) {
+    .grid-cols-1, 
+    .grid-cols-2,
+    .grid-cols-3,
+    .grid-cols-4 {
+        grid-template-columns: 1fr !important;
+        gap: 0.75rem !important;
+    }
+    
+    .card, 
+    .service-card {
+        margin-bottom: 0.75rem;
+    }
+    
+    /* Improve tap targets on mobile */
+    .btn, 
+    button,
+    a.tab-link,
+    .mobile-bottom-nav a,
+    input[type="submit"] {
+        min-height: 44px;
+        padding: 0.625rem 1rem;
+    }
+    
+    /* Fix form fields on mobile */
+    input, 
+    select, 
+    textarea {
+        font-size: 16px !important; /* Prevents zoom on iOS */
+        padding: 0.75rem !important;
+        border-radius: 0.5rem !important;
+    }
+    
+    /* Improve table display on mobile */
+    .responsive-table {
+        margin: 0 -1rem; /* Negative margin to break out of container */
+        width: calc(100% + 2rem);
+    }
+    
+    /* Improve sidebar/content layout */
+    .sidebar {
+        width: 85vw !important;
+    }
+    
+    /* Adjust modal positioning for mobile */
+    .modal {
+        padding: 0.75rem;
+    }
+    
+    .modal .bg-white {
+        width: 100% !important;
+        max-width: 100% !important;
+        border-radius: 1rem !important;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    #services-container {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .service-card .card-header {
+        flex-direction: column;
+    }
+    
+    .service-card .card-icon {
+        margin-bottom: 12px;
+        margin-left: 0;
+    }
+    
+    .service-card .card-actions {
+        flex-direction: column;
+    }
+    
+    .service-card .card-price {
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+    #services-container {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    #services-container {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+    #services-container {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+@media (min-width: 1281px) {
+    #services-container {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+}
+
+/* Improve medium screen layout (tablets) */
+@media (min-width: 641px) and (max-width: 1023px) {
+    .grid-cols-1, 
+    .grid-cols-2,
+    .grid-cols-3,
+    .grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+    /* Adjust sidebar width on tablets */
+    .sidebar {
+        width: 320px !important;
+        max-width: 60vw !important;
+    }
+}
+
+/* تحسينات بطاقات الخدمات */
+.service-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px !important;
+    transition: all 0.3s ease;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid #e5e7eb;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(59, 130, 246, 0.1) !important;
+    border-color: #3b82f6;
+}
+
+.service-card .card-header {
+    padding: 16px;
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.service-card .card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 12px;
+    flex-shrink: 0;
+}
+
+.service-card .card-title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.service-card .card-subtitle {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.service-card .card-body {
+    padding: 16px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card .card-description {
+    color: #6b7280;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.service-card .card-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #2563eb;
+    margin-bottom: 8px;
+}
+
+.service-card .card-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.service-card .card-actions button {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.service-card .edit-btn {
+    background-color: #dbeafe;
+    color: #2563eb;
+    border: none;
+}
+
+.service-card .edit-btn:hover {
+    background-color: #bfdbfe;
+}
+
+.service-card .delete-btn {
+    background-color: #fee2e2;
+    color: #dc2626;
+    border: none;
+}
+
+.service-card .delete-btn:hover {
+    background-color: #fecaca;
+}
+
+/* تنسيق العملة والأسعار */
+.price-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(37, 99, 235, 0.1);
+    color: #2563eb;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* الأيقونات المنصات */
+.platform-icon {
+    margin-left: 4px;
+    font-size: 1.2em;
+}
+
+/* علامة الحالة */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+.status-active {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.status-inactive {
+    background-color: #f3f4f6;
+    color: #6b7280;
+}
+
+/* Improved sidebar transition */
+.sidebar {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* Bounce effect */
+}
+
+/* Mobile menu toggle button enhancement */
+#sidebar-toggle {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s;
+}
+
+#sidebar-toggle:hover,
+#sidebar-toggle:focus {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Better padding for content on mobile */
+@media (max-width: 640px) {
+    .p-6, .px-6, .py-6 {
+        padding: 0.75rem !important;
+    }
+    
+    .mt-6, .my-6 {
+        margin-top: 0.75rem !important;
+    }
+    
+    .mb-6, .my-6 {
+        margin-bottom: 0.75rem !important;
+    }
+    
+    h1, h2, h3 {
+        margin-bottom: 0.75rem !important;
+    }
+}
+
+/* Fix for RTL layout on mobile */
+html[dir="rtl"] .mobile-bottom-nav a i {
+    margin-left: 0.25rem;
+    margin-right: 0;
+}
+
+/* Ensure proper spacing with mobile nav */
+body {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+@media (max-width: 640px) {
+    #dashboard {
+        padding-bottom: calc(4rem + env(safe-area-inset-bottom, 0)) !important;
+    }
+}
+
+/* تحسينات التصميم المتجاوب */
+
+/* تنسيق الشبكة لكل حجم شاشة */
+@media (max-width: 640px) {
+  #services-container {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .service-card .card-header {
+    flex-direction: column;
+  }
+  
+  .service-card .card-icon {
+    margin-bottom: 12px;
+    margin-left: 0;
+  }
+  
+  .service-card .card-actions {
+    flex-direction: column;
+  }
+  
+  .service-card .card-price {
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  #services-container {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  #services-container {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  #services-container {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media (min-width: 1281px) {
+  #services-container {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+/* تحسين عرض أزرار التحكم */
+@media (max-width: 768px) {
+  .flex.flex-col.md\\:flex-row.md\\:justify-between.md\\:items-center.mb-6.gap-4 {
+    gap: 8px !important;
+  }
+  
+  .btn {
+    font-size: 0.8rem !important;
+    padding: 6px 12px !important;
+  }
+  
+  h2.text-2xl {
+    font-size: 1.5rem !important;
+  }
+  
+  .flex.items-center {
+    flex-wrap: wrap;
+  }
+  
+  #service-filter {
+    width: 100%;
+    margin-top: 8px;
+  }
+  
+  #service-search {
+    width: 100%;
+    margin-top: 8px;
+  }
+}
+
+/* تحسين تصميم البطاقات على الأجهزة الصغيرة */
+@media (max-width: 480px) {
+  .service-card {
+    margin-bottom: 16px;
+  }
+  
+  .service-card .card-title {
+    font-size: 1rem;
+  }
+  
+  .service-card .card-description {
+    font-size: 0.85rem;
+  }
+  
+  .service-card .card-price {
+    font-size: 1rem;
+  }
+}
+
+/* تحسين أزرار التصفية والبحث */
+
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+  justify-content: space-between;
+}
+
+.search-filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.filter-select {
+  min-width: 150px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+  color: #374151;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.filter-select:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+  outline: none;
+}
+
+.search-input {
+  flex-grow: 1;
+  padding: 8px 12px 8px 36px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+  color: #374151;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.search-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+  outline: none;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .filter-container {
+    flex-direction: column;
+  }
+  
+  .search-filter-group {
+    flex-direction: column;
+  }
+  
+  .filter-select,
+  .search-input {
+    width: 100%;
+  }
+}

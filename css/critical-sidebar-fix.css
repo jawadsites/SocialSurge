@@ -1,0 +1,115 @@
+/* إصلاح نهائي للشريط الجانبي - تطبيق بأولوية قصوى */
+
+/* CRITICAL FIX - DO NOT MODIFY */
+html {
+  --sidebar-width: 20%;
+  --content-width: 80%;
+}
+
+/* إصلاح حاسم للشريط الجانبي في الأجهزة الكبيرة */
+@media (min-width: 1025px) {
+  /* إظهار الشريط الجانبي فقط عندما يكون dashboard مرئياً وليس login-screen */
+  body:not(.mobile-view) .dashboard:not(.hidden) .sidebar,
+  body:not(.mobile-view) .dashboard:not(.hidden) .w-1/5,
+  body:not(.mobile-view) .dashboard:not(.hidden) div[class*="w-1/5"] {
+    width: var(--sidebar-width) !important;
+    display: block !important;
+    visibility: visible !important;
+    position: relative !important;
+    transform: translateX(0) !important;
+    max-width: none !important;
+    min-width: var(--sidebar-width) !important;
+    flex: 0 0 var(--sidebar-width) !important;
+    opacity: 1 !important;
+    z-index: 10 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    transition: none !important;
+    flex-shrink: 0 !important;
+  }
+  
+  /* إخفاء الشريط الجانبي في شاشة تسجيل الدخول */
+  body:not(.mobile-view) #login-screen:not(.hidden) ~ .flex .sidebar,
+  body:not(.mobile-view) #login-screen:not(.hidden) ~ .flex .w-1/5 {
+    display: none !important;
+  }
+  
+  /* إخفاء الشريط الجانبي بشكل افتراضي إذا لم يكن في لوحة التحكم */
+  body:not(.mobile-view) .sidebar:not(.dashboard .sidebar),
+  body:not(.mobile-view) .w-1/5:not(.dashboard .w-1/5) {
+    display: none !important;
+  }
+  
+  body:not(.mobile-view) .dashboard:not(.hidden) .sidebar ul,
+  body:not(.mobile-view) .dashboard:not(.hidden) .sidebar li,
+  body:not(.mobile-view) .dashboard:not(.hidden) .sidebar a {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  body:not(.mobile-view) .dashboard:not(.hidden) .main-content,
+  body:not(.mobile-view) .dashboard:not(.hidden) .w-4/5,
+  body:not(.mobile-view) .dashboard:not(.hidden) div[class*="w-4/5"] {
+    width: var(--content-width) !important;
+    max-width: var(--content-width) !important;
+    flex: 0 0 var(--content-width) !important;
+    margin-right: 0 !important;
+  }
+  
+  /* تعطيل أي أكواد تتحكم بإخفاء الشريط الجانبي */
+  body:not(.mobile-view) [id*="sidebar-toggle"],
+  body:not(.mobile-view) [id*="sidebar-overlay"] {
+    display: none !important;
+  }
+  
+  /* تأكيد تنسيق التخطيط */
+  body:not(.mobile-view) .flex {
+    display: flex !important;
+  }
+  
+  /* ضمان المحاذاة الصحيحة للمحتوى */
+  html[dir="rtl"] body:not(.mobile-view) .sidebar {
+    right: 0 !important;
+    left: auto !important;
+    transform: translateX(0) !important;
+  }
+}
+
+/* منع ظهور أي عناصر للشريط الجانبي في شاشة تسجيل الدخول */
+#login-screen:not(.hidden) ~ * .sidebar,
+#login-screen:not(.hidden) ~ * .w-1/5 {
+  display: none !important;
+}
+
+/* العنصر الجذري - يتجاوز كافة قواعد CSS الأخرى لكن فقط للداشبورد */
+#main-layout-root:not(.mobile-only) .dashboard:not(.hidden) .sidebar {
+  width: var(--sidebar-width) !important;
+  display: block !important;
+}
+
+/* قاعدة نهائية بأعلى أولوية */
+@media screen and (min-width: 1025px) {
+  .sidebar, .w-1/5 {
+    width: 20% !important;
+    display: block !important;
+    visibility: visible !important;
+  }
+  
+  .main-content, .w-4/5 {
+    width: 80% !important;
+  }
+}
+
+/* منع العناصر المطلقة من تغطية الشريط الجانبي */
+@media screen and (min-width: 1025px) {
+  .absolute, .fixed {
+    z-index: auto;
+  }
+}
+
+/* قواعد إضافية للتأكد من إخفاء الشريط الجانبي في شاشة تسجيل الدخول */
+#login-screen:not(.hidden) ~ .flex,
+#login-screen:not(.hidden) ~ div .flex {
+  display: block !important;
+}

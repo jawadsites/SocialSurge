@@ -1,0 +1,48 @@
+/**
+ * Additional fixes for sidebar toggle responsiveness
+ * This file ensures the hamburger menu toggle is only visible on mobile screens
+ */
+
+/* Basic toggle button styling - keeps styles consistent while allowing responsive behavior */
+#sidebar-toggle {
+  border: none;
+  background-color: transparent;
+  transition: background-color 0.2s ease;
+}
+
+/* Basic hover state */
+#sidebar-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+/* RTL support for the toggle button positioning */
+html[dir="rtl"] #sidebar-toggle {
+  margin-left: 0;
+  margin-right: 4px;
+}
+
+/* LTR support for the toggle button positioning */
+html:not([dir="rtl"]) #sidebar-toggle {
+  margin-left: 4px;
+  margin-right: 0;
+}
+
+/* Force the toggle button to follow lg:hidden rule */
+@media (min-width: 1025px) {
+  /* This will override any other styling that might be making the button visible */
+  #sidebar-toggle.lg\:hidden {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+}
+
+/* Ensure the toggle is visible on mobile */
+@media (max-width: 1024px) {
+  #sidebar-toggle.lg\:hidden {
+    display: flex !important;
+    visibility: visible !important;
+  }
+}

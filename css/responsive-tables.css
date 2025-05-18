@@ -1,0 +1,108 @@
+/**
+ * Enhanced responsive tables
+ */
+
+/* Make tables responsive on mobile */
+@media (max-width: 768px) {
+    /* Improved table display on small screens */
+    .dashboard-table {
+        border-collapse: separate;
+        border-spacing: 0 0.5rem;
+        width: 100%;
+    }
+    
+    .dashboard-table td {
+        display: flex !important;
+        text-align: right !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        border-bottom: 1px solid #f3f4f6;
+        padding: 0.75rem !important;
+    }
+    
+    .dashboard-table td:last-child {
+        border-bottom: none;
+    }
+    
+    .dashboard-table td:before {
+        content: attr(data-label);
+        font-weight: 600;
+        margin-left: 1rem;
+        color: #4b5563;
+        white-space: nowrap;
+        flex-shrink: 0;
+        margin-right: auto;
+        text-align: left;
+    }
+    
+    .dashboard-table tbody tr {
+        display: block;
+        margin-bottom: 1rem;
+        background: #ffffff;
+        border-radius: 0.75rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        border: 1px solid #e5e7eb;
+        overflow: hidden;
+    }
+    
+    .dashboard-table thead {
+        display: none;
+    }
+    
+    /* Better spacing for table actions */
+    .dashboard-table td:last-child {
+        display: flex !important;
+        justify-content: flex-end !important;
+        gap: 0.5rem;
+    }
+    
+    /* Make sure input fields in tables are full width on mobile */
+    .dashboard-table td input,
+    .dashboard-table td select {
+        width: 100% !important;
+        max-width: none !important;
+        margin-top: 0.25rem;
+    }
+    
+    /* Fix alignment of buttons in tables */
+    .dashboard-table td .action-btn {
+        margin-left: 0.25rem;
+    }
+}
+
+/* Ensure tables have horizontal scroll when needed */
+.responsive-table {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Improved visual indication of horizontal scroll */
+@media (max-width: 768px) {
+    .responsive-table::-webkit-scrollbar {
+        height: 4px;
+        background: #f3f4f6;
+    }
+    
+    .responsive-table::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+    }
+    
+    /* Add visual indicator for scrollable tables */
+    .responsive-table:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 15px;
+        background: linear-gradient(to right, transparent, rgba(255,255,255,0.8));
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    
+    .responsive-table.has-overflow:after {
+        opacity: 1;
+    }
+}
